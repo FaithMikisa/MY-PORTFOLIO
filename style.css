@@ -1,0 +1,91 @@
+:root{
+  --bg:#F4F2E4; --surface:#E4EAD0; --ink:#2E2418; --muted:#6B5A44;
+  --plum:#3F5D2E; --rose:#9A6F0B; --line:#CDC29F; --grid:#E5E3CC; --on-plum:#fff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1B1F14; --surface:#2A3020; --ink:#EFEBD8; --muted:#C2B896;
+    --plum:#A9C77E; --rose:#E3B83C; --line:#4A5236; --grid:#262B1B; --on-plum:#1B1F14;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1B1F14; --surface:#2A3020; --ink:#EFEBD8; --muted:#C2B896;
+  --plum:#A9C77E; --rose:#E3B83C; --line:#4A5236; --grid:#262B1B; --on-plum:#1B1F14;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:4.5rem}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0; background:var(--bg); color:var(--ink); font:400 1.05rem/1.65 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:60rem; margin:0 auto; padding:0 1.4rem}
+h1,h2,h3{font-family:Fraunces,Georgia,"Times New Roman",serif; line-height:1.15; margin:0}
+a{color:var(--plum)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--rose); outline-offset:3px}
+p{margin:0 0 1rem; max-width:42rem}
+
+.nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--bg); border-bottom:1px solid var(--line)}
+.nav ul{display:flex; gap:.3rem; overflow-x:auto; list-style:none; margin:0; padding:.6rem 0}
+.nav a{display:block; padding:.35rem .85rem; border-radius:2rem; text-decoration:none; color:var(--ink); white-space:nowrap; font-weight:500}
+.nav a:hover{background:var(--surface)}
+
+.band{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px); background-size:34px 34px; border-bottom:1px solid var(--line)}
+.hero{display:grid; grid-template-columns:1fr auto; gap:2.5rem; align-items:center; padding-top:4rem; padding-bottom:4rem}
+.hero>*{animation:rise .7s ease both}
+.hero>.photo{animation-delay:.15s}
+@keyframes rise{from{opacity:0; transform:translateY(16px)}}
+.hero h1{font-size:clamp(3rem,10vw,5.6rem); font-weight:700; letter-spacing:-.02em; color:var(--plum)}
+.lead{font-size:1.35rem; margin:1rem 0 .4rem}
+.sub{color:var(--muted)}
+.actions{display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.4rem}
+.btn{display:inline-block; padding:.7rem 1.3rem; border-radius:2rem; font-weight:700; text-decoration:none; border:2px solid var(--plum); transition:transform .15s}
+.btn.primary{background:var(--plum); color:var(--on-plum)}
+.btn.ghost{color:var(--plum)}
+.btn:hover{transform:translateY(-2px)}
+.portrait{display:block; width:14rem; height:14rem; border-radius:50%; object-fit:cover; border:5px solid var(--bg); box-shadow:0 0 0 3px var(--rose),12px 12px 0 3px var(--plum)}
+
+section{padding:3.5rem 0}
+section+section{border-top:1px solid var(--line)}
+h2{font-size:2.1rem; margin-bottom:1.4rem}
+.statement{font:500 clamp(1.35rem,3.4vw,1.9rem)/1.4 Fraunces,Georgia,serif; max-width:44rem; margin-bottom:1.4rem}
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:1rem}
+.card{background:var(--surface); border-radius:1rem; padding:1.3rem 1.4rem}
+.card h3{font-size:1.25rem; margin-bottom:.3rem}
+.card p{margin:0 0 .5rem}
+.when{color:var(--muted); font-size:.95rem}
+
+.timeline{list-style:none; margin:0; padding:0 0 0 1.6rem; border-left:2px solid var(--line)}
+.timeline li{position:relative; margin-bottom:1rem}
+.timeline li::before{content:""; position:absolute; left:calc(-1.6rem - 7px); top:1.5rem; width:12px; height:12px; border-radius:50%; background:var(--rose); border:2px solid var(--bg)}
+.timeline .card{padding:1rem 1.3rem}
+.timeline .card p{margin:0}
+
+.chips{list-style:none; display:flex; flex-wrap:wrap; gap:.5rem; padding:0; margin:1rem 0 0}
+.chips li{background:var(--bg); border:1px solid var(--line); border-radius:2rem; padding:.3rem .9rem; font-weight:500}
+
+.cell{display:grid; grid-template-columns:4.2rem 1fr; background:var(--surface); border:1px solid var(--line); border-radius:.6rem; overflow:hidden}
+.gutter{padding:1rem .7rem; color:var(--rose); font:500 .9rem/1.7 ui-monospace,Menlo,Consolas,monospace; text-align:right; border-right:1px solid var(--line)}
+.cell pre{margin:0; padding:1rem 1.2rem; overflow-x:auto; font:400 .95rem/1.7 ui-monospace,Menlo,Consolas,monospace}
+.c{color:var(--muted)} .s{color:var(--plum)} .k{color:var(--rose)}
+
+.links{display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1rem}
+.links a{display:block; background:var(--surface); border-radius:1rem; padding:1.1rem 1.3rem; text-decoration:none; color:var(--ink); transition:transform .15s}
+.links a:hover{transform:translateY(-3px)}
+.links span{display:block; color:var(--muted); font-size:.95rem}
+.links strong{color:var(--plum); overflow-wrap:anywhere}
+footer{padding:2rem 0 3rem; color:var(--muted); border-top:1px solid var(--line)}
+
+.progress{position:fixed; top:env(safe-area-inset-top,0px); left:0; width:100%; height:4px; background:var(--rose); transform:scaleX(0); transform-origin:0 50%; z-index:10}
+@supports (animation-timeline:scroll()){.progress{animation:grow linear both; animation-timeline:scroll(root)}}
+@keyframes grow{to{transform:scaleX(1)}}
+h2::after{content:""; display:block; width:3rem; height:4px; border-radius:2px; background:var(--rose); margin-top:.6rem}
+.cards .card,.timeline .card{transition:transform .15s}
+.cards .card:hover,.timeline .card:hover{transform:translateY(-3px)}
+.cell+.cell{margin-top:.6rem}
+@media (max-width:42rem){
+  .hero{grid-template-columns:1fr; padding-top:2.5rem; padding-bottom:3rem}
+  .hero>.photo{order:-1}
+  .portrait{width:10.5rem; height:10.5rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
